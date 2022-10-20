@@ -56,7 +56,9 @@ public class GetItemDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetItemDTO that = (GetItemDTO) o;
-        return id == that.id && available == that.available && name.equals(that.name) && description.equals(that.description) && price.equals(that.price) && categories.equals(that.categories);
+        return id == that.id && available == that.available && name.equals(that.name)
+                && description.equals(that.description) && price.equals(that.price)
+                && categories.equals(that.categories);
     }
 
     @Override

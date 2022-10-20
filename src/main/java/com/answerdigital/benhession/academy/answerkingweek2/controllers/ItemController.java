@@ -114,7 +114,8 @@ public class ItemController {
 
     }
 
-    private ResponseEntity<GetItemDTO> saveCategoriesAndGetResponse(@RequestBody @Valid AddItemDTO itemDTO, Optional<Item> savedItem) {
+    private ResponseEntity<GetItemDTO> saveCategoriesAndGetResponse(
+            @RequestBody @Valid AddItemDTO itemDTO, Optional<Item> savedItem) {
         Optional<Item> itemWithCategories = savedItem
                 .map(i -> itemService.setCategories(i, itemDTO.getCategoryIds()))
                 .orElseThrow(() -> new ConflictException(String.format("An Item named '%s' already exists",
