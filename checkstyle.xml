@@ -8,6 +8,12 @@
         <module name="AvoidStarImport"/>
         <module name="ConstantName"/>
         <module name="EmptyBlock"/>
+        <module name="FinalClass"/>
+        <module name="MutableException"/>
+        <module name="FinalLocalVariable"/>
+        <module name="NoFinalizer"/>
+        <module name="FinalParameters" />
+        <module name="IllegalImport"/>
     </module>
     <module name="FileLength">
         <property name="max" value="1000"/>
@@ -18,4 +24,7 @@
         <property name="ignorePattern"
                   value="^( *\* *([^ ]+|\{@code .*|&lt;a href=&quot;[^&quot;]+&quot;&gt;)|(package|import) .*)$"/>
     </module>
+    <module name="NewlineAtEndOfFile"/>
+    <module name="UnusedImports"/>
+
 </module>
