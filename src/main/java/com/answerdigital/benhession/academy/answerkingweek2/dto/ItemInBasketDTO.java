@@ -62,7 +62,9 @@ public class ItemInBasketDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ItemInBasketDTO that = (ItemInBasketDTO) o;
-        return id == that.id && available == that.available && quantity == that.quantity && name.equals(that.name) && description.equals(that.description) && price.equals(that.price) && categories.equals(that.categories);
+        return id == that.id && available == that.available && quantity
+                == that.quantity && name.equals(that.name) && description.equals(that.description)
+                && price.equals(that.price) && categories.equals(that.categories);
     }
 
     @Override

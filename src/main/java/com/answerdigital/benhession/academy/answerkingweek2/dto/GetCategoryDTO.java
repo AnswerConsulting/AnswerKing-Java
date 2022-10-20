@@ -42,7 +42,8 @@ public class GetCategoryDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetCategoryDTO that = (GetCategoryDTO) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(items, that.items);
+        return id == that.id && Objects.equals(name, that.name)
+                && Objects.equals(description, that.description) && Objects.equals(items, that.items);
     }
 
     @Override

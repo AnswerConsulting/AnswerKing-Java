@@ -58,7 +58,8 @@ public class GetOrderDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GetOrderDTO that = (GetOrderDTO) o;
-        return id == that.id && address.equals(that.address) && orderStatus.equals(that.orderStatus) && Objects.equals(basket, that.basket);
+        return id == that.id && address.equals(that.address)
+                && orderStatus.equals(that.orderStatus) && Objects.equals(basket, that.basket);
     }
 
     @Override

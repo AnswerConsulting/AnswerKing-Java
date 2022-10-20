@@ -60,7 +60,10 @@ public class AddItemDTO {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddItemDTO that = (AddItemDTO) o;
-        return name.equals(that.name) && description.equals(that.description) && price.equals(that.price) && available.equals(that.available);
+        return name.equals(that.name)
+                && description.equals(that.description)
+                && price.equals(that.price)
+                && available.equals(that.available);
     }
 
     @Override
