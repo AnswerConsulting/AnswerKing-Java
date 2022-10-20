@@ -9,4 +9,13 @@
         <module name="ConstantName"/>
         <module name="EmptyBlock"/>
     </module>
+    <module name="FileLength">
+        <property name="max" value="1000"/>
+    </module>
+    <module name="LineLength">
+        <property name="fileExtensions" value="java"/>
+        <property name="max" value="130"/>
+        <property name="ignorePattern"
+                  value="^( *\* *([^ ]+|\{@code .*|&lt;a href=&quot;[^&quot;]+&quot;&gt;)|(package|import) .*)$"/>
+    </module>
 </module>
