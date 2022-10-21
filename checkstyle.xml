@@ -15,6 +15,7 @@
         <module name="FinalParameters" />
         <module name="IllegalImport"/>
         <module name="UnusedImports"/>
+        <module name="ConstantName"/>
     </module>
     <module name="FileLength">
         <property name="max" value="1000"/>
