@@ -18,7 +18,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     static Logger logger = LoggerFactory.getLogger("ResponseEntityExceptionHandler");
 
-    static public void checkDTOFields(BindingResult bindingResult) throws InvalidValuesException {
+    static public void checkDTOFields(final BindingResult bindingResult) throws InvalidValuesException {
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(fieldError -> {
                 if (Objects.equals(fieldError.getCode(), "NotBlank") ||
@@ -36,36 +36,36 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleItemNotFound(RuntimeException e, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND, e.getMessage(), request);
+    public ResponseEntity<ErrorResponse> handleItemNotFound(final RuntimeException e, final HttpServletRequest request) {
+        final ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND, e.getMessage(), request);
 
         return new ResponseEntity<>(response, response.getHttpStatus());
     }
 
     @ExceptionHandler(InvalidValuesException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidItemDTO(RuntimeException e, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage(), request);
+    public ResponseEntity<ErrorResponse> handleInvalidItemDTO(final RuntimeException e, final HttpServletRequest request) {
+        final ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage(), request);
 
         return new ResponseEntity<>(response, response.getHttpStatus());
     }
 
     @ExceptionHandler(ConflictException.class)
-    public ResponseEntity<ErrorResponse> handleConflictingItems(RuntimeException e, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(HttpStatus.CONFLICT, e.getMessage(), request);
+    public ResponseEntity<ErrorResponse> handleConflictingItems(final RuntimeException e, final HttpServletRequest request) {
+        final ErrorResponse response = new ErrorResponse(HttpStatus.CONFLICT, e.getMessage(), request);
 
         return new ResponseEntity<>(response, response.getHttpStatus());
     }
 
     @ExceptionHandler(UnableToSaveEntityException.class)
-    public ResponseEntity<ErrorResponse> handleUnableToSave(RuntimeException e, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), request);
+    public ResponseEntity<ErrorResponse> handleUnableToSave(final RuntimeException e, final HttpServletRequest request) {
+        final ErrorResponse response = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), request);
 
         return new ResponseEntity<>(response, response.getHttpStatus());
     }
 
     @ExceptionHandler(ItemUnavailableException.class)
-    public ResponseEntity<ErrorResponse> handleItemUnavailable(RuntimeException e, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(HttpStatus.FORBIDDEN, e.getMessage(), request);
+    public ResponseEntity<ErrorResponse> handleItemUnavailable(final RuntimeException e, final HttpServletRequest request) {
+        final ErrorResponse response = new ErrorResponse(HttpStatus.FORBIDDEN, e.getMessage(), request);
 
         return new ResponseEntity<>(response, response.getHttpStatus());
     }

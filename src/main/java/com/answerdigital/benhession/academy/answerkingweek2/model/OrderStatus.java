@@ -21,7 +21,7 @@ public class OrderStatus {
     public OrderStatus() {
     }
 
-    public OrderStatus(String status) {
+    public OrderStatus(final String status) {
         this.status = status;
     }
 
@@ -34,10 +34,10 @@ public class OrderStatus {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderStatus that = (OrderStatus) o;
+        final OrderStatus that = (OrderStatus) o;
         return id == that.id && status.equals(that.status);
     }
 

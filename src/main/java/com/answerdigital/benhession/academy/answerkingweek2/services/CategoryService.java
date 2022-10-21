@@ -24,14 +24,14 @@ public class CategoryService {
     Logger logger = LoggerFactory.getLogger("Category service");
 
     @Autowired
-    public CategoryService(CategoryRepository categoryRepository, ItemRepository itemRepository,
-                           ItemCategoryRepository itemCategoryRepository) {
+    public CategoryService(final CategoryRepository categoryRepository, final ItemRepository itemRepository,
+                           final ItemCategoryRepository itemCategoryRepository) {
         this.categoryRepository = categoryRepository;
         this.itemRepository = itemRepository;
         this.itemCategoryRepository = itemCategoryRepository;
     }
 
-    public Optional<Category> addCategory(Category category) throws UnableToSaveEntityException {
+    public Optional<Category> addCategory(final Category category) throws UnableToSaveEntityException {
         if (categoryRepository.existsByName(category.getName())) {
             return Optional.empty();
         } else {
@@ -39,9 +39,9 @@ public class CategoryService {
         }
     }
 
-    public Optional<Category> updateCategory(Category category) throws UnableToSaveEntityException {
+    public Optional<Category> updateCategory(final Category category) throws UnableToSaveEntityException {
 
-        boolean hasNameConflict = categoryRepository.existsByNameAndIdIsNot(category.getName(), category.getId());
+        final boolean hasNameConflict = categoryRepository.existsByNameAndIdIsNot(category.getName(), category.getId());
 
         if (hasNameConflict) {
             return Optional.empty();
@@ -51,7 +51,7 @@ public class CategoryService {
 
     }
 
-    private Category save(Category category) throws UnableToSaveEntityException {
+    private Category save(final Category category) throws UnableToSaveEntityException {
         try {
             return categoryRepository.save(category);
         } catch (Exception e) {
@@ -61,18 +61,18 @@ public class CategoryService {
     }
 
     public Optional<Set<Category>> getAll() {
-        Set<Category> currentCategories = categoryRepository.findAll();
+        final Set<Category> currentCategories = categoryRepository.findAll();
 
         return currentCategories.isEmpty() ? Optional.empty() : Optional.of(currentCategories);
     }
 
-    public Optional<Category> findById(int categoryId) {
+    public Optional<Category> findById(final int categoryId) {
         return categoryRepository.findById(categoryId);
     }
 
-    public Category remove(Category category) {
-        Set<Item> items = category.getItems();
-        Set<ItemCategory> itemCategories = category.getItemCategories();
+    public Category remove(final Category category) {
+        final Set<Item> items = category.getItems();
+        final Set<ItemCategory> itemCategories = category.getItemCategories();
         items.forEach(item -> item.remove(category));
         category.clearItemCategories();
 
@@ -83,7 +83,7 @@ public class CategoryService {
         return category;
     }
 
-    public boolean allExist(Set<Integer> ids) {
+    public boolean allExist(final Set<Integer> ids) {
         return ids.size() == categoryRepository.countByIdIn(ids);
     }
 }

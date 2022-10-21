@@ -27,12 +27,12 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private final Set<ItemCategory> itemCategories = new HashSet<>();
 
-    public Category(String name, String description) {
+    public Category(final String name, final String description) {
         this.name = name;
         this.description = description;
     }
 
-    public Category(AddCategoryDTO addCategoryDTO) {
+    public Category(final AddCategoryDTO addCategoryDTO) {
         this.name = addCategoryDTO.getName();
         this.description = addCategoryDTO.getDescription();
     }
@@ -41,13 +41,13 @@ public class Category {
 
     }
 
-    void addItemCategory(ItemCategory itemCategory) {
+    void addItemCategory(final ItemCategory itemCategory) {
          itemCategories.add(itemCategory);
     }
 
-    void removeItem(Item item) {
+    void removeItem(final Item item) {
 
-        Optional<ItemCategory> itemCategory = itemCategories.stream()
+        final Optional<ItemCategory> itemCategory = itemCategories.stream()
                 .filter(ic -> ic.getItem().equals(item))
                 .findFirst();
 
@@ -55,7 +55,7 @@ public class Category {
 
     }
 
-    public boolean containsItem(Item item) {
+    public boolean containsItem(final Item item) {
         return getItems().contains(item);
     }
 
@@ -83,24 +83,24 @@ public class Category {
         return description;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Category category = (Category) o;
+        final Category category = (Category) o;
         return name.equals(category.name);
     }
 

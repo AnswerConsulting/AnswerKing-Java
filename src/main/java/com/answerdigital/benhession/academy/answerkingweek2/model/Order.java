@@ -44,14 +44,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(AddOrderDTO addOrderDTO) {
+    public Order(final AddOrderDTO addOrderDTO) {
         this.address = addOrderDTO.getAddress();
         this.orderStatus = new OrderStatus("Created");
         this.basket = new HashMap<>();
     }
 
-    public boolean addItemToBasket(Item item, int quantity) {
-        boolean successful;
+    public boolean addItemToBasket(final Item item, final int quantity) {
+        final boolean successful;
 
         if(basket.containsKey(item)) {
             successful = false;
@@ -63,15 +63,15 @@ public class Order {
         return successful;
     }
 
-    public boolean basketHasItem(Item item) {
+    public boolean basketHasItem(final Item item) {
         return basket.containsKey(item);
     }
 
-    public void removeItemFromBasket(Item item) {
+    public void removeItemFromBasket(final Item item) {
         basket.remove(item);
     }
 
-    public void updateQuantity(Item item, int quantity) {
+    public void updateQuantity(final Item item, final int quantity) {
         basket.put(item, quantity);
     }
 
@@ -95,11 +95,11 @@ public class Order {
         return orderStatus;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(final String address) {
         this.address = address;
     }
 
-    public void setOrderStatus(OrderStatus orderStatus) {
+    public void setOrderStatus(final OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -108,10 +108,10 @@ public class Order {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
+        final Order order = (Order) o;
         return id == order.id;
     }
 

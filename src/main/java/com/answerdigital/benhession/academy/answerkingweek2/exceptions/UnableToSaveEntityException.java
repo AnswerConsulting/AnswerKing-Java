@@ -5,7 +5,7 @@ public class UnableToSaveEntityException extends RuntimeException {
         super("Unable to save entity");
     }
 
-    public UnableToSaveEntityException(String message) {
+    public UnableToSaveEntityException(final String message) {
         super(message);
     }
 }

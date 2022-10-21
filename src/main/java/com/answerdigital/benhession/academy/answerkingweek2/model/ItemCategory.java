@@ -1,7 +1,5 @@
 package com.answerdigital.benhession.academy.answerkingweek2.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +26,7 @@ public class ItemCategory {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
-    ItemCategory(Item item, Category category) {
+    ItemCategory(final Item item, final Category category) {
         this.item = item;
         this.category = category;
         category.addItemCategory(this);
@@ -38,7 +36,7 @@ public class ItemCategory {
 
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -54,19 +52,19 @@ public class ItemCategory {
         return category;
     }
 
-    public void setItem(Item item) {
+    public void setItem(final Item item) {
         this.item = item;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(final Category category) {
         this.category = category;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemCategory that = (ItemCategory) o;
+        final ItemCategory that = (ItemCategory) o;
         return item.equals(that.item) && category.equals(that.category);
     }
 

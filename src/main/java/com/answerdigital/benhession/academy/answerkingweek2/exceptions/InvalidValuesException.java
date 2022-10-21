@@ -5,7 +5,7 @@ public class InvalidValuesException extends RuntimeException {
         super("The values entered for the item do not meet validation requirements.");
     }
 
-    public InvalidValuesException(String message) {
+    public InvalidValuesException(final String message) {
         super(message);
     }
 }

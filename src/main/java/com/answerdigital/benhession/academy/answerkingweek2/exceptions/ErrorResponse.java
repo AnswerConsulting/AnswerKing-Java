@@ -20,7 +20,7 @@ public class ErrorResponse {
     @JsonIgnore
     private final HttpStatus httpStatus;
 
-    public ErrorResponse(HttpStatus httpStatus, String message, HttpServletRequest request) {
+    public ErrorResponse(final HttpStatus httpStatus, final String message, final HttpServletRequest request) {
         this.timestamp = new Date();
         this.status = httpStatus.value();
         this.error = httpStatus.name();
@@ -29,7 +29,7 @@ public class ErrorResponse {
         this.httpStatus = httpStatus;
     }
 
-    public ErrorResponse(HttpStatus httpStatus, String message) {
+    public ErrorResponse(final HttpStatus httpStatus, final String message) {
         this.timestamp = new Date();
         this.status = httpStatus.value();
         this.error = httpStatus.name();

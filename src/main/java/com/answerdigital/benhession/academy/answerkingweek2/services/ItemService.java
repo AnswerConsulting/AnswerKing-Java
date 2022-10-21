@@ -27,18 +27,18 @@ public class ItemService {
     Logger logger = LoggerFactory.getLogger("ItemService");
 
     @Autowired
-    public ItemService(ItemRepository itemRepository, CategoryRepository categoryRepository,
-                       ItemCategoryRepository itemCategoryRepository) {
+    public ItemService(final ItemRepository itemRepository, final CategoryRepository categoryRepository,
+                       final ItemCategoryRepository itemCategoryRepository) {
         this.itemRepository = itemRepository;
         this.categoryRepository = categoryRepository;
         this.itemCategoryRepository = itemCategoryRepository;
     }
 
-    public Optional<Item> findById(Integer itemId) {
+    public Optional<Item> findById(final Integer itemId) {
         return itemRepository.findById(itemId);
     }
 
-    public Optional<Item> addItem(Item item) throws UnableToSaveEntityException {
+    public Optional<Item> addItem(final Item item) throws UnableToSaveEntityException {
         if (itemRepository.existsByName(item.getName())) {
             return Optional.empty();
         } else {
@@ -46,9 +46,9 @@ public class ItemService {
         }
     }
 
-    public Optional<Item> updateItem(Item item) throws UnableToSaveEntityException {
+    public Optional<Item> updateItem(final Item item) throws UnableToSaveEntityException {
 
-        boolean hasNameConflict = itemRepository.existsByNameAndIdIsNot(item.getName(), item.getId());
+        final boolean hasNameConflict = itemRepository.existsByNameAndIdIsNot(item.getName(), item.getId());
 
         if (hasNameConflict) {
             return Optional.empty();
@@ -57,7 +57,7 @@ public class ItemService {
         }
     }
 
-    private Item save(Item item) throws UnableToSaveEntityException {
+    private Item save(final Item item) throws UnableToSaveEntityException {
 
         try {
             return itemRepository.saveAndFlush(item);
@@ -70,7 +70,7 @@ public class ItemService {
 
     public Optional<List<Item>> findAll() {
 
-        List<Item> items = itemRepository.findAll();
+        final List<Item> items = itemRepository.findAll();
 
         if (items.isEmpty()) {
             return Optional.empty();
@@ -100,11 +100,11 @@ public class ItemService {
 //    }
 
 
-    public Optional<Item> setCategories(Item item, Set<Integer> categoryIds) {
-        Set<Category> categorySet = new HashSet<>();
+    public Optional<Item> setCategories(final Item item, final Set<Integer> categoryIds) {
+        final Set<Category> categorySet = new HashSet<>();
 
         categoryIds.forEach(categoryId -> {
-            Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
+            final Optional<Category> categoryOptional = categoryRepository.findById(categoryId);
             categoryOptional.ifPresent(categorySet::add);
         });
 
@@ -122,14 +122,14 @@ public class ItemService {
         return Optional.empty();
     }
 
-    public Category addCategory(Item item, Category category) {
+    public Category addCategory(final Item item, final Category category) {
         item.addCategory(category);
         itemCategoryRepository.saveAll(category.getItemCategories());
         itemRepository.save(item);
         return categoryRepository.save(category);
     }
 
-    public Category removeCategory(Item item, Category category) {
+    public Category removeCategory(final Item item, final Category category) {
         itemCategoryRepository.deleteAll(item.clearCategories());
         itemRepository.save(item);
         return categoryRepository.save(category);

@@ -19,11 +19,11 @@ public class OrderService {
     Logger logger = LoggerFactory.getLogger("Order service");
 
     @Autowired
-    public OrderService(OrderRepository orderRepository) {
+    public OrderService(final OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    private Order save(Order order) throws UnableToSaveEntityException {
+    private Order save(final Order order) throws UnableToSaveEntityException {
         try {
             return orderRepository.save(order);
         } catch (Exception e) {
@@ -32,20 +32,20 @@ public class OrderService {
         }
     }
 
-    public Optional<Order> addOrder(Order order) throws UnableToSaveEntityException {
+    public Optional<Order> addOrder(final Order order) throws UnableToSaveEntityException {
         return Optional.of(save(order));
     }
 
-    public Optional<Order> findById(int orderId) {
+    public Optional<Order> findById(final int orderId) {
         return orderRepository.findById(orderId);
     }
 
-    public Order update(Order order) throws UnableToSaveEntityException {
+    public Order update(final Order order) throws UnableToSaveEntityException {
         return save(order);
     }
 
     public Optional<List<Order>> getAll() {
-        List<Order> orders = orderRepository.findAll();
+        final List<Order> orders = orderRepository.findAll();
 
         if(orders.isEmpty()) {
             return Optional.empty();
