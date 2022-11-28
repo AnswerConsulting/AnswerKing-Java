@@ -147,6 +147,7 @@
 							<skipTests>false</skipTests>
 							<includes>
 								<include>**/*IT.java</include>
+								<include>**/*IntegrationTest.java</include>
 							</includes>
 						</configuration>
 					</execution>
