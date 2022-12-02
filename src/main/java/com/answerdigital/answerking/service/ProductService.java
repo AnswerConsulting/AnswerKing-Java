@@ -3,7 +3,9 @@ package com.answerdigital.answerking.service;
 import com.answerdigital.answerking.exception.custom.NameUnavailableException;
 import com.answerdigital.answerking.exception.custom.RetirementException;
 import com.answerdigital.answerking.exception.generic.NotFoundException;
+import com.answerdigital.answerking.mapper.CategoryMapper;
 import com.answerdigital.answerking.mapper.ProductMapper;
+import com.answerdigital.answerking.model.Category;
 import com.answerdigital.answerking.model.Product;
 import com.answerdigital.answerking.repository.ProductRepository;
 import com.answerdigital.answerking.request.ProductRequest;
@@ -19,7 +21,10 @@ import java.util.stream.Collectors;
 public class ProductService {
     private final ProductRepository productRepository;
 
+
     private final ProductMapper productMapper = Mappers.getMapper(ProductMapper.class);
+    private final CategoryMapper categoryMapper = Mappers.getMapper(CategoryMapper.class);
+
 
     @Autowired
     public ProductService(final ProductRepository productRepository) {

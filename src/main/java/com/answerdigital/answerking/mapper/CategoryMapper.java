@@ -7,14 +7,19 @@ import com.answerdigital.answerking.util.DateTimeUtility;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring",
-        imports = {DateTimeUtility.class, Collectors.class})
+        imports = {DateTimeUtility.class, Collectors.class, Collections.class},
+        uses = {ReferenceMapper.class})
 public interface CategoryMapper {
 
+    Category toEntity(Long id);
     @Mapping(target = "createdOn", expression = "java(DateTimeUtility.getDateTimeAsString())")
     @Mapping(target = "lastUpdated", expression = "java(DateTimeUtility.getDateTimeAsString())")
+    @Mapping(target = "products", expression = "java(Collections.EMPTY_SET)")
     Category addRequestToCategory(CategoryRequest addCategoryRequest);
 
     @Mapping(target = "lastUpdated", expression = "java(DateTimeUtility.getDateTimeAsString())")
