@@ -5,11 +5,11 @@ import javax.validation.constraints.Pattern;
 
 public record CategoryRequest(
         @NotBlank
-        @Pattern(regexp = "^[a-zA-Z\s-]*",
-                message = "Category name must only contain letters, spaces and dashes")
+        @Pattern(regexp = "^[a-zA-Z\\s-]*",
+            message = "Category name must only contain letters, spaces and dashes")
         String name,
         @NotBlank
-        @Pattern(regexp = "^[a-zA-Z\s.,!?0-9-']*",
-                message = "Category description can only contain letters, numbers, spaces and !?-.,' punctuation")
+        @Pattern(regexp = "^[a-zA-Z\\s.,!?0-9-']*",
+            message = "Category description can only contain letters, numbers, spaces and !?-.,' punctuation")
         String description
 ) {}
